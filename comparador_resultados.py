@@ -4,7 +4,7 @@ from glob import glob
 from clase_resultados import ResultadosESAR
 from uncertainties import ufloat
 import matplotlib.pyplot as plt
-#%% 1 - NE@citrico
+#%%  NE@citrico a 135 kHz
 subdirectorios=os.listdir(os.path.join(os.getcwd(),"NE@citrato - coprecipitacion/NE_135"))
 subdirectorios.sort()
 print(subdirectorios)
@@ -14,7 +14,7 @@ for sd in subdirectorios:
     print(sd)
     directorio_a_analizar = os.path.join(os.getcwd(), "NE@citrato - coprecipitacion/NE_135", sd)
 
-    patron_analisis = os.path.join(directorio_a_analizar, "Analisis_*")
+    patron_analisis = os.path.join(directorio_a_analizar, "**/Analisis_*")
     directorios_analisis = glob(patron_analisis)
 
     if not directorios_analisis:
