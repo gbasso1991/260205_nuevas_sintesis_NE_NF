@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 subdirectorios=os.listdir(os.path.join(os.getcwd(),"NE@citrato - coprecipitacion/NE_135"))
 subdirectorios.sort()
 print(subdirectorios)
-
 #%%
 for sd in subdirectorios:
     print(sd)
@@ -46,13 +45,13 @@ for sd in subdirectorios:
     if hasattr(resultados, 'Hc'):
         print(f"Hc: {ufloat(resultados.Hc.mean(), resultados.Hc.std()):.1uS} kA/m")
 
-    fig, ax = resultados.plot_ciclos_comparacion(guardar=True)
+    # fig, ax = resultados.plot_ciclos_comparacion(guardar=True)
 
-    fig1, ax1 = resultados.plot_ciclos_comparacion(guardar=True)
+    # fig1, ax1 = resultados.plot_ciclos_comparacion(guardar=True)
 
-    fig2, ax2 = resultados.plot_evolucion_temporal(guardar=True)
+    # fig2, ax2 = resultados.plot_evolucion_temporal(guardar=True)
 
-    fig3, ax3 = resultados.plot_evolucion_temperatura(guardar=True)
+    #fig3, ax3 = resultados.plot_evolucion_temperatura(guardar=True)
 
     plt.show()
 #%% 2 - NP quitosano
