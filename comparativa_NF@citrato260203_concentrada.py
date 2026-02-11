@@ -1,4 +1,4 @@
-#%% Librerias
+#%%
 import numpy as np
 from uncertainties import ufloat, unumpy
 import matplotlib.pyplot as plt
@@ -114,7 +114,7 @@ def lector_ciclos(filepath):
 
     return t,H_Vs,M_Vs,H_kAm,M_Am,metadata
 #%% Extraigo valores de las tablas de resultados
-resultados_135 = glob("NE@citrato - coprecipitacion/NE_135/**/**/Analisis_*/*resultados.txt")
+resultados_135 = glob("NF@citrato - solvotermal - concentrada/NF_135/**/**/Analisis_*/*resultados.txt")
 resultados_135.sort()
 
 tau_135_050,tau_135_075,tau_135_100,tau_135_125,tau_135_150 = [],[],[],[],[]
@@ -153,8 +153,8 @@ for f in resultados_135:
         Hc_135_150.append(meta['Hc_kA/m'])
         Mr_135_150.append(meta['Mr_A/m'])
 
-#% 212 kHz 
-resultados_212 = glob("NE@citrato - coprecipitacion/NE_212/**/**/Analisis_*/*resultados.txt")
+#%% 212 kHz 
+resultados_212 = glob("NF@citrato - solvotermal - concentrada/NF_212/**/**/Analisis_*/*resultados.txt")
 resultados_212.sort()    
 
 tau_212_050,tau_212_075,tau_212_100,tau_212_125,tau_212_150 = [],[],[],[],[]
@@ -193,8 +193,8 @@ for f in resultados_212:
         Hc_212_150.append(meta['Hc_kA/m'])
         Mr_212_150.append(meta['Mr_A/m'])
 
-#300 kHz
-resultados_300 = glob("NE@citrato - coprecipitacion/NE_300/**/**/Analisis_*/*resultados.txt")
+#%%300 kHz
+resultados_300 = glob("NF@citrato - solvotermal - concentrada/NF_300/**/**/Analisis_*/*resultados.txt")
 resultados_300.sort()
 
 tau_300_050,tau_300_075,tau_300_100,tau_300_125,tau_300_150 = [],[],[],[],[]
@@ -471,32 +471,3 @@ plt.show()
 for name,figura in zip(['tau_SAR_vs_H','Hc_Mr_vs_H','tau_SAR_vs_frec','Hc_Mr_vs_frec'],[fig,fig2,fig3,fig4]):
     figura.savefig(f'{name}.png',dpi=300)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# %%
