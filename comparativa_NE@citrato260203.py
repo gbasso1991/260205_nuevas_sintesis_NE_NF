@@ -469,34 +469,301 @@ plt.show()
 
 #%% Guardo figuras
 for name,figura in zip(['tau_SAR_vs_H','Hc_Mr_vs_H','tau_SAR_vs_frec','Hc_Mr_vs_frec'],[fig,fig2,fig3,fig4]):
-    figura.savefig(f'{name}.png',dpi=300)
+    figura.savefig(f'NE@citrato - coprecipitacion/{name}.png',dpi=300)
+#%% Ploteo los ciclos promedio
+
+ciclos_135 = glob("NE@citrato - coprecipitacion/NE_135/**/**/Analisis_*/*ciclo_promedio_H_M.txt")
+ciclos_135.sort()
+
+ciclos_135_050,ciclos_135_075,ciclos_135_100,ciclos_135_125,ciclos_135_150 = [],[],[],[],[]
+
+for c in ciclos_135:
+    if '050dA' in c:
+        pass
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_135_050.append((H_kAm,M_Am,metadata))
+    elif '075dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_135_075.append((H_kAm,M_Am,metadata))
+    elif '100dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_135_100.append((H_kAm,M_Am,metadata))
+    elif '125dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_135_125.append((H_kAm,M_Am,metadata))
+    elif '150dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_135_150.append((H_kAm,M_Am,metadata))
+
+ciclos_212 = glob("NE@citrato - coprecipitacion/NE_212/**/**/Analisis_*/*ciclo_promedio_H_M.txt")
+ciclos_212.sort()
+
+ciclos_212_050,ciclos_212_075,ciclos_212_100,ciclos_212_125,ciclos_212_150 = [],[],[],[],[]
+
+for c in ciclos_212:
+    if '050dA' in c:
+        pass
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_212_050.append((H_kAm,M_Am,metadata))
+    elif '075dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_212_075.append((H_kAm,M_Am,metadata))
+    elif '100dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_212_100.append((H_kAm,M_Am,metadata))
+    elif '125dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_212_125.append((H_kAm,M_Am,metadata))
+    elif '150dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_212_150.append((H_kAm,M_Am,metadata))
+
+ciclos_300 = glob("NE@citrato - coprecipitacion/NE_300/**/**/Analisis_*/*ciclo_promedio_H_M.txt")
+ciclos_300.sort() 
+ciclos_300_050,ciclos_300_075,ciclos_300_100,ciclos_300_125,ciclos_300_150 = [],[],[],[],[]
+
+for c in ciclos_300:
+    if '050dA' in c:
+        pass
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_300_050.append((H_kAm,M_Am,metadata))
+    elif '075dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_300_075.append((H_kAm,M_Am,metadata))
+    elif '100dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_300_100.append((H_kAm,M_Am,metadata))
+    elif '125dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_300_125.append((H_kAm,M_Am,metadata))
+    elif '150dA' in c:
+        _,_,_,H_kAm,M_Am,metadata = lector_ciclos(c)
+        ciclos_300_150.append((H_kAm,M_Am,metadata))
+
+#%% Ploteo ciclos promedio para 135 kHz
+fig0, (ax,ax2,ax3,ax4,ax5) = plt.subplots(5,1,figsize=(6,18),constrained_layout=True,sharex=True,sharey=True)
+for ciclo in ciclos_135_050:
+    H_kAm, M_Am, meta = ciclo
+    ax.plot(H_kAm/1000,M_Am,label="19 kA/m")
+
+for ciclo in ciclos_135_075:
+    H_kAm, M_Am, meta = ciclo
+    ax2.plot(H_kAm/1000,M_Am,label="29")
+
+for ciclo in ciclos_135_100:
+    H_kAm, M_Am, meta = ciclo
+    ax3.plot(H_kAm/1000,M_Am,label="38")
+
+for ciclo in ciclos_135_125:
+    H_kAm, M_Am, meta = ciclo
+    ax4.plot(H_kAm/1000,M_Am,label="47")
+
+for ciclo in ciclos_135_150:    
+    H_kAm, M_Am, meta = ciclo
+    ax5.plot(H_kAm/1000,M_Am,label="57")
+
+ax5.set_xlabel("H (kA/m)")
+ax.legend(title="H$_0$ (kA/m)")
+
+for a in [ax,ax2,ax3,ax4,ax5]:
+    a.set_ylabel("M (A/m)")
+    a.grid()
+    a.legend(title="H$_0$ (kA/m)",ncol=1)
+plt.suptitle('135 kHz - NE@citrato 260203 - 9.0 g/L Fe$_3$O$_4$')
+plt.show()
+#%% Ploteo ciclos promedio para 212 kHz
+fig, (ax,ax2,ax3,ax4,ax5) = plt.subplots(5,1,figsize=(6,18),constrained_layout=True,sharex=True,sharey=True)
+for ciclo in ciclos_212_050:
+    H_kAm, M_Am, meta = ciclo
+    ax.plot(H_kAm/1000,M_Am,label="19 kA/m")
+
+for ciclo in ciclos_212_075:
+    H_kAm, M_Am, meta = ciclo
+    ax2.plot(H_kAm/1000,M_Am,label="29")
+
+for ciclo in ciclos_212_100:
+    H_kAm, M_Am, meta = ciclo
+    ax3.plot(H_kAm/1000,M_Am,label="38")
+
+for ciclo in ciclos_212_125:
+    H_kAm, M_Am, meta = ciclo
+    ax4.plot(H_kAm/1000,M_Am,label="47")
+
+for ciclo in ciclos_212_150:    
+    H_kAm, M_Am, meta = ciclo
+    ax5.plot(H_kAm/1000,M_Am,label="57")
+
+ax5.set_xlabel("H (kA/m)")
+ax.legend(title="H$_0$ (kA/m)")
+
+for a in [ax,ax2,ax3,ax4,ax5]:
+    a.set_ylabel("M (A/m)")
+    a.grid()
+    a.legend(title="H$_0$ (kA/m)",ncol=1)
+plt.suptitle('212 kHz - NE@citrato 260203 - 9.0 g/L Fe$_3$O$_4$')
+plt.show()
+#%% Ploteo ciclos promedio para 300 kHz
+fig2, (ax,ax2,ax3,ax4,ax5) = plt.subplots(5,1,figsize=(6,18),constrained_layout=True,sharex=True,sharey=True)
+for ciclo in ciclos_300_050:
+    H_kAm, M_Am, meta = ciclo
+    ax.plot(H_kAm/1000,M_Am,label="19 kA/m")
+
+for ciclo in ciclos_300_075:
+    H_kAm, M_Am, meta = ciclo
+    ax2.plot(H_kAm/1000,M_Am,label="29")
+
+for ciclo in ciclos_300_100:
+    H_kAm, M_Am, meta = ciclo
+    ax3.plot(H_kAm/1000,M_Am,label="38")
+
+for ciclo in ciclos_300_125:
+    H_kAm, M_Am, meta = ciclo
+    ax4.plot(H_kAm/1000,M_Am,label="47")
+
+for ciclo in ciclos_300_150:    
+    H_kAm, M_Am, meta = ciclo
+    ax5.plot(H_kAm/1000,M_Am,label="57")
+
+ax5.set_xlabel("H (kA/m)")
+ax.legend(title="H$_0$ (kA/m)")
+
+for a in [ax,ax2,ax3,ax4,ax5]:
+    a.set_ylabel("M (A/m)")
+    a.grid()
+    a.legend(title="H$_0$ (kA/m)",ncol=1)
+plt.suptitle('300 kHz - NE@citrato 260203 - 9.0 g/L Fe$_3$O$_4$')
+plt.show()  
 
 
+#%% Comparo 1 ciclo representativo para cada campo
+#135 kHz
+fig3,ax =plt.subplots(figsize=(6,5),constrained_layout=True)
 
+ax.plot(ciclos_135_050[0][0]/1000,ciclos_135_050[0][1],label="19",zorder=5)
+ax.plot(ciclos_135_075[0][0]/1000,ciclos_135_075[0][1],label="29",zorder=4)
+ax.plot(ciclos_135_100[2][0]/1000,ciclos_135_100[2][1],label="38",zorder=3)
+ax.plot(ciclos_135_125[1][0]/1000,ciclos_135_125[1][1],label="47",zorder=2)
+ax.plot(ciclos_135_150[1][0]/1000,ciclos_135_150[1][1],label="57",zorder=1)
 
+ax.set_ylabel("M (A/m)")
+ax.grid(zorder=0)
+ax.legend(title="H$_0$ (kA/m)",ncol=1)
+plt.suptitle('135 kHz - NE@citrato 260203 - 9.0 g/L Fe$_3$O$_4$')
+plt.show()
+#%%
+#212 kHz
+fig4,ax =plt.subplots(figsize=(6,5),constrained_layout=True)
+ax.plot(ciclos_212_050[0][0]/1000,ciclos_212_050[0][1],label="19",zorder=5)
+ax.plot(ciclos_212_075[0][0]/1000,ciclos_212_075[0][1],label="29",zorder=4)
+ax.plot(ciclos_212_100[1][0]/1000,ciclos_212_100[1][1],label="38",zorder=3)
+ax.plot(ciclos_212_125[1][0]/1000,ciclos_212_125[1][1],label="47",zorder=2)
+ax.plot(ciclos_212_150[1][0]/1000,ciclos_212_150[1][1],label="57",zorder=1)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ax.set_ylabel("M (A/m)")
+ax.grid(zorder=0)
+ax.legend(title="H$_0$ (kA/m)",ncol=1)
+plt.suptitle('212 kHz - NE@citrato 260203 - 9.0 g/L Fe$_3$O$_4$')
+plt.show()
 # %%
+# 300 kHz
+fig5,ax =plt.subplots(figsize=(6,5),constrained_layout=True)
+ax.plot(ciclos_300_050[0][0]/1000,ciclos_300_050[0][1],label="19",zorder=5)
+ax.plot(ciclos_300_075[1][0]/1000,ciclos_300_075[1][1],label="29",zorder=4)
+ax.plot(ciclos_300_100[1][0]/1000,ciclos_300_100[1][1],label="38",zorder=3)
+ax.plot(ciclos_300_125[2][0]/1000,ciclos_300_125[2][1],label="47",zorder=2)
+ax.plot(ciclos_300_150[3][0]/1000,ciclos_300_150[3][1],label="57",zorder=1)
+
+ax.set_ylabel("M (A/m)")
+ax.grid(zorder=0)
+ax.legend(title="H$_0$ (kA/m)",ncol=1)
+plt.suptitle('300 kHz - NE@citrato 260203 - 9.0 g/L Fe$_3$O$_4$')
+plt.show()
+# %% Comparo ciclos representativos para cada campo
+#20
+fig6,ax =plt.subplots(figsize=(6,5),constrained_layout=True)
+ax.plot(ciclos_135_050[0][0]/1000,ciclos_135_050[0][1],label="135 kHz",zorder=3)
+ax.plot(ciclos_212_050[0][0]/1000,ciclos_212_050[0][1],label="212 kHz",zorder=2)
+ax.plot(ciclos_300_050[0][0]/1000,ciclos_300_050[0][1],label="300 kHz",zorder=1)    
+
+ax.set_ylabel("M (A/m)")
+ax.grid(zorder=0)
+ax.legend(title="$f$ (kHz)",ncol=1)
+ax.set_title("20 kA/m - NE@citrato 260203 - 9.0 g/L Fe$_3$O$_4$")
+
+plt.show()
+#29
+fig7,ax =plt.subplots(figsize=(6,5),constrained_layout=True)
+ax.plot(ciclos_135_075[0][0]/1000,ciclos_135_075[0][1],label="135 kHz",zorder=3)
+ax.plot(ciclos_212_075[0][0]/1000,ciclos_212_075[0][1],label="212 kHz",zorder=2)
+ax.plot(ciclos_300_075[1][0]/1000,ciclos_300_075[1][1],label="300 kHz",zorder=1)    
+
+ax.set_ylabel("M (A/m)")
+ax.grid(zorder=0)
+ax.legend(title="$f$ (kHz)",ncol=1)
+ax.set_title("29 kA/m - NE@citrato 260203 - 9.0 g/L Fe$_3$O$_4$")
+
+plt.show()
+
+#38
+fig8,ax =plt.subplots(figsize=(6,5),constrained_layout=True)
+ax.plot(ciclos_135_100[2][0]/1000,ciclos_135_100[2][1],label="135 kHz",zorder=3)
+ax.plot(ciclos_212_100[1][0]/1000,ciclos_212_100[1][1],label="212 kHz",zorder=2)
+ax.plot(ciclos_300_100[1][0]/1000,ciclos_300_100[1][1],label="300 kHz",zorder=1)    
+
+ax.set_ylabel("M (A/m)")
+ax.grid(zorder=0)
+ax.legend(title="$f$ (kHz)",ncol=1)
+ax.set_title("38 kA/m - NE@citrato 260203 - 9.0 g/L Fe$_3$O$_4$")
+
+plt.show()
+
+#47
+fig9,ax =plt.subplots(figsize=(6,5),constrained_layout=True)
+ax.plot(ciclos_135_125[1][0]/1000,ciclos_135_125[1][1],label="135 kHz",zorder=3)
+ax.plot(ciclos_212_125[2][0]/1000,ciclos_212_125[2][1],label="212 kHz",zorder=2)
+ax.plot(ciclos_300_125[2][0]/1000,ciclos_300_125[2][1],label="300 kHz",zorder=1)    
+
+ax.set_ylabel("M (A/m)")
+ax.grid(zorder=0)
+ax.legend(title="$f$ (kHz)",ncol=1)
+ax.set_title("47 kA/m - NE@citrato 260203 - 9.0 g/L Fe$_3$O$_4$")
+
+plt.show()  
+
+#57
+fig10,ax =plt.subplots(figsize=(6,5),constrained_layout=True)
+ax.plot(ciclos_135_150[1][0]/1000,ciclos_135_150[1][1],label="135 kHz",zorder=3)
+ax.plot(ciclos_212_150[1][0]/1000,ciclos_212_150[1][1],label="212 kHz",zorder=2)    
+ax.plot(ciclos_300_150[3][0]/1000,ciclos_300_150[3][1],label="300 kHz",zorder=1)
+
+ax.set_ylabel("M (A/m)")
+ax.grid(zorder=0)
+ax.legend(title="$f$ (kHz)",ncol=1)
+ax.set_title("57 kA/m - NE@citrato 260203 - 9.0 g/L Fe$_3$O$_4$")
+
+plt.show()
+# %% guardo figuras
+for name,figura in zip(['ciclos_135kHz_all',
+                        'ciclos_212kHz_all',
+                        'ciclos_300kHz_all',
+                        'ciclos_135kHz_comparativo',
+                        'ciclos_212kHz_comparativo',
+                        'ciclos_300kHz_comparativo',
+                        'ciclos_20kAm',
+                        'ciclos_29kAm',
+                        'ciclos_38kAm',
+                        'ciclos_47kAm',
+                        'ciclos_57kAm'],
+                       [fig0,
+                        fig,
+                        fig2,
+                        fig3,
+                        fig4,
+                        fig5,
+                        fig6,
+                        fig7,
+                        fig8,
+                        fig9,
+                        fig10]):
+    figura.savefig(f'NE@citrato - coprecipitacion/{name}.png',dpi=300)
+#%%
