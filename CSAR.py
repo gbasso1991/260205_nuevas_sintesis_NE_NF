@@ -27,65 +27,164 @@ def lector_templog(path):
 
     return timestamp,temp_CH1, temp_CH2
 #%% Levanto data
+#NE
 # path_agua='250624_120427_agua.csv'
-path_300_150='NE@citrato - coprecipitacion/CSAR/260205_044538_300_150.csv'
-path_300_100='NE@citrato - coprecipitacion/CSAR/260205_045254_300_100.csv'
-path_300_050='NE@citrato - coprecipitacion/CSAR/260205_045843_300_050.csv' 
+path_NE_300_150='NE@citrato - coprecipitacion/CSAR/260205_044538_300_150.csv'
+path_NE_300_100='NE@citrato - coprecipitacion/CSAR/260205_045254_300_100.csv'
+path_NE_300_050='NE@citrato - coprecipitacion/CSAR/260205_045843_300_050.csv' 
 
-path_212_150='NE@citrato - coprecipitacion/CSAR/260205_051305_212_150.csv'
-path_212_100='NE@citrato - coprecipitacion/CSAR/260205_052035_212_100.csv'
-path_212_050='NE@citrato - coprecipitacion/CSAR/260205_052900_212_050.csv'
+path_NE_212_150='NE@citrato - coprecipitacion/CSAR/260205_051305_212_150.csv'
+path_NE_212_100='NE@citrato - coprecipitacion/CSAR/260205_052035_212_100.csv'
+path_NE_212_050='NE@citrato - coprecipitacion/CSAR/260205_052900_212_050.csv'
 
-path_135_150='NE@citrato - coprecipitacion/CSAR/260205_042615_135_150.csv'
+path_NE_135_150='NE@citrato - coprecipitacion/CSAR/260205_042615_135_150.csv'
 
-# # # t_agua,T_agua,_=lector_templog(path_agua)
-t_300_150,T_300_150,_=lector_templog(path_300_150)
-t_300_100,T_300_100,_=lector_templog(path_300_100)
-t_300_050,T_300_050,_=lector_templog(path_300_050)
+t_NE_300_150,T_NE_300_150,_=lector_templog(path_NE_300_150)
+t_NE_300_100,T_NE_300_100,_=lector_templog(path_NE_300_100)
+t_NE_300_050,T_NE_300_050,_=lector_templog(path_NE_300_050)
 
-t_212_150,T_212_150,_=lector_templog(path_212_150)
-t_212_100,T_212_100,_=lector_templog(path_212_100)
-t_212_050,T_212_050,_=lector_templog(path_212_050)
+t_NE_212_150,T_NE_212_150,_=lector_templog(path_NE_212_150)
+t_NE_212_100,T_NE_212_100,_=lector_templog(path_NE_212_100)
+t_NE_212_050,T_NE_212_050,_=lector_templog(path_NE_212_050)
 
-t_135_150,T_135_150,_=lector_templog(path_135_150)
+t_NE_135_150,T_NE_135_150,_=lector_templog(path_NE_135_150)
 
-# # # t_agua_0 = np.array([(t-t_agua[0]).total_seconds() for t in t_agua])
-t_300_150 = np.array([(t-t_300_150[0]).total_seconds() for t in t_300_150])
-t_300_100 = np.array([(t-t_300_100[0]).total_seconds() for t in t_300_100])
-t_300_050 = np.array([(t-t_300_050[0]).total_seconds() for t in t_300_050])
+t_NE_300_150 = np.array([(t-t_NE_300_150[0]).total_seconds() for t in t_NE_300_150])
+t_NE_300_100 = np.array([(t-t_NE_300_100[0]).total_seconds() for t in t_NE_300_100])
+t_NE_300_050 = np.array([(t-t_NE_300_050[0]).total_seconds() for t in t_NE_300_050])
 
-t_212_150 = np.array([(t-t_212_150[0]).total_seconds() for t in t_212_150])
-t_212_100 = np.array([(t-t_212_100[0]).total_seconds() for t in t_212_100])
-t_212_050 = np.array([(t-t_212_050[0]).total_seconds() for t in t_212_050])
+t_NE_212_150 = np.array([(t-t_NE_212_150[0]).total_seconds() for t in t_NE_212_150])
+t_NE_212_100 = np.array([(t-t_NE_212_100[0]).total_seconds() for t in t_NE_212_100])
+t_NE_212_050 = np.array([(t-t_NE_212_050[0]).total_seconds() for t in t_NE_212_050])
 
-t_135_150 = np.array([(t-t_135_150[0]).total_seconds() for t in t_135_150]) 
+t_NE_135_150 = np.array([(t-t_NE_135_150[0]).total_seconds() for t in t_NE_135_150])
 
-#%% Ploteo todo 
+
+
+#%%NF 
+path_agua='NF@citrato - solvotermal - concentrada/CSAR/260210_011936_135_150_agua.csv'
+path_NF_300_150='NF@citrato - solvotermal - concentrada/CSAR/260210_023412_NF_300_150.csv'
+path_NF_300_100='NF@citrato - solvotermal - concentrada/CSAR/260210_023827_NF_300_100.csv'
+path_NF_300_050='NF@citrato - solvotermal - concentrada/CSAR/260210_024507_NF_300_050.csv'
+path_NF_212_150='NF@citrato - solvotermal - concentrada/CSAR/260210_021428_NF_212_150.csv'
+path_NF_212_100='NF@citrato - solvotermal - concentrada/CSAR/260210_022109_NF_212_100.csv'
+path_NF_135_150='NF@citrato - solvotermal - concentrada/CSAR/260210_015944_NF_135_150.csv'
+
+t_eq,T_eq,_=lector_templog(path_agua)
+t_eq = np.array([(t-t_eq[0]).total_seconds() for t in t_eq])
+
+fig,ax=plt.subplots(figsize=(18,10), constrained_layout=True)
+ax.plot(t_eq,T_eq,'.-')
+ax.set_xlabel('t (s)')
+ax.set_ylabel('T (°C)')
+ax.grid()
+plt.title('Agua - NF@citrato - solvotermal - concentrada    ',loc='left')
+
+
+t_NF_300_150,T_NF_300_150,_=lector_templog(path_NF_300_150)
+t_NF_300_100,T_NF_300_100,_=lector_templog(path_NF_300_100)
+t_NF_300_050,T_NF_300_050,_=lector_templog(path_NF_300_050)
+
+t_NF_212_150,T_NF_212_150,_=lector_templog(path_NF_212_150)
+t_NF_212_100,T_NF_212_100,_=lector_templog(path_NF_212_100)
+
+t_NF_135_150,T_NF_135_150,_=lector_templog(path_NF_135_150) 
+
+t_NF_300_150 = np.array([(t-t_NF_300_150[0]).total_seconds() for t in t_NF_300_150])
+t_NF_300_100 = np.array([(t-t_NF_300_100[0]).total_seconds() for t in t_NF_300_100])
+t_NF_300_050 = np.array([(t-t_NF_300_050[0]).total_seconds() for t in t_NF_300_050])
+
+t_NF_212_150 = np.array([(t-t_NF_212_150[0]).total_seconds() for t in t_NF_212_150])
+t_NF_212_100 = np.array([(t-t_NF_212_100[0]).total_seconds() for t in t_NF_212_100])
+
+t_NF_135_150 = np.array([(t-t_NF_135_150[0]).total_seconds() for t in t_NF_135_150])
+#%% Ploteo NE
 fig, (ax,ax1,ax2)=plt.subplots(3,1,figsize=(10,8),constrained_layout=True,sharex=True)
 
 ax.set_title('300 kHz',loc='left')
-ax.plot(t_300_150,T_300_150,label='300_150')
-ax.plot(t_300_100,T_300_100,label='300_100')
-ax.plot(t_300_050,T_300_050,label='300_050')
+
+ax.plot(t_NE_300_150,T_NE_300_150,label='300_150')
+ax.plot(t_NE_300_100,T_NE_300_100,label='300_100')
+ax.plot(t_NE_300_050,T_NE_300_050,label='300_050')
 
 ax1.set_title('212 kHz',loc='left')
-ax1.plot(t_212_150,T_212_150,label='212_150')
-ax1.plot(t_212_100,T_212_100,label='212_100')
-ax1.plot(t_212_050,T_212_050,label='212_050')
+ax1.plot(t_NE_212_150,T_NE_212_150,label='212_150')
+ax1.plot(t_NE_212_100,T_NE_212_100,label='212_100')
+ax1.plot(t_NE_212_050,T_NE_212_050,label='212_050')
 
 ax2.set_title('135 kHz',loc='left')
-ax2.plot(t_135_150,T_135_150,label='135_150')    
-
-
-
+ax2.plot(t_NE_135_150,T_NE_135_150,label='135_150')    
 # ax.plot(t_FF2_0,T_FF2,label='FF2')
 for a in (ax,ax1,ax2):
     a.grid()
     a.legend()
     a.set_xlim(0,)
-
+plt.suptitle('NE@citrico - coprecipitacion',fontsize=16)
 plt.savefig('T_vs_t.png', dpi=300)
 plt.show()
+#%% Ploteo NF
+fig, (ax,ax1,ax2)=plt.subplots(3,1,figsize=(9,7),constrained_layout=True,sharex=True)
+
+ax.set_title('300 kHz',loc='left')
+ax.plot(t_NF_300_150,T_NF_300_150,'.-',label='300_150')
+ax.plot(t_NF_300_100,T_NF_300_100,'.-',label='300_100')
+ax.plot(t_NF_300_050,T_NF_300_050,'.-',label='300_050')
+
+ax1.set_title('212 kHz',loc='left')
+ax1.plot(t_NF_212_150,T_NF_212_150,'.-',label='212_150')
+ax1.plot(t_NF_212_100,T_NF_212_100,'.-',label='212_100')
+
+ax2.set_title('135 kHz',loc='left')
+ax2.plot(t_NF_135_150,T_NF_135_150,'.-',label='135_150')    
+# ax.plot(t_FF2_0,T_FF2,label='FF2')
+for a in (ax,ax1,ax2):
+    a.grid()
+    a.legend()
+    a.set_xlim(0,)
+plt.suptitle('NF@citrico - solvotermal - concentrada',fontsize=16)
+plt.savefig('T_vs_t_NF.png', dpi=300)
+plt.xlim(0,150)
+plt.show()
+#%% Rcorto a valor minimo
+# indx_min=np.nonzero(T_NE_300_150==T_NE_300_150.min())[0][0]
+indx_min=[]
+for i,e in enumerate([T_NE_300_150,T_NE_300_100,T_NE_300_050,
+                     T_NE_212_150,T_NE_212_100,T_NE_212_050,
+                     T_NE_135_150]):
+    indx_min.append(np.nonzero(e==e.min())[0][0])
+    print(f'Indice minimo {i} : {np.nonzero(e==e.min())[0][0]}')
+
+
+#%%
+%matplotlib inline
+fig, (ax,ax1,ax2)=plt.subplots(3,1,figsize=(10,8),constrained_layout=True,sharex=True)
+
+ax.set_title('300 kHz',loc='left')
+
+ax.plot(t_NE_300_150,T_NE_300_150,'o',label='300_150')
+ax.plot(t_NE_300_150[indx_min[0]:],T_NE_300_150[indx_min[0]:],'.',label='300_150')
+
+ax.plot(t_NE_300_100,T_NE_300_100,'.-',label='300_100')
+
+ax.plot(t_NE_300_050,T_NE_300_050,'.-',label='300_050')
+
+ax1.set_title('212 kHz',loc='left')
+
+ax1.plot(t_NE_212_150,T_NE_212_150,label='212_150')
+ax1.plot(t_NE_212_100,T_NE_212_100,label='212_100')
+#ax1.plot(t_NE_212_050,T_NE_212_050,label='212_050')
+
+ax2.set_title('135 kHz',loc='left')
+ax2.plot(t_NE_135_150,T_NE_135_150,'o',label='135_150')    
+ax2.plot(t_NE_135_150[indx_min[6]:],T_NE_135_150[indx_min[6]:],'.',label='135_150')    
+
+for a in (ax,ax1,ax2):
+    a.grid()
+    a.legend()
+    a.set_xlim(0,)
+plt.suptitle('NE@citrico - coprecipitacion',fontsize=16)
+plt.show()
+
 #%%
 def ajustes_lineal_T_arbitraria(Tcentral, t, T, label, x=1.0):
     """
@@ -169,8 +268,16 @@ def ajustes_lineal_T_arbitraria(Tcentral, t, T, label, x=1.0):
     
     return dict_lin
 #%%# Resultados 
-resultados_FF1 = ajustes_lineal_T_arbitraria(23.0, t_FF1_0, T_FF1,'FF1', x=2)
-resultados_FF2 = ajustes_lineal_T_arbitraria(24.0, t_FF2_0, T_FF2,'FF2', x=5)
+# resultados_FF1 = ajustes_lineal_T_arbitraria(23.0, t_FF1_0, T_FF1,'FF1', x=2)
+# resultados_FF2 = ajustes_lineal_T_arbitraria(24.0, t_FF2_0, T_FF2,'FF2', x=5)
+
+resultados_NE_300_150 = ajustes_lineal_T_arbitraria(29.7, t_NE_300_150, T_NE_300_150,'NE 300_150', x=2.5)
+resultados_NE_300_100 = ajustes_lineal_T_arbitraria(29.8, t_NE_300_100, T_NE_300_100,'NE 300_100', x=2.5)
+
+
+
+
+
 #%%
 concentracion=ufloat(11.3,0.4)
 dTdt_lineal_promedio=np.mean([resultados_FF1['pendiente'],resultados_FF2['pendiente']])
