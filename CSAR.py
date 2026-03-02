@@ -123,7 +123,7 @@ plt.suptitle('NE@citrico - coprecipitacion',fontsize=16)
 plt.savefig('T_vs_t.png', dpi=300)
 plt.show()
 #%% Ploteo NF
-fig, (ax,ax1,ax2)=plt.subplots(3,1,figsize=(9,7),constrained_layout=True,sharex=True)
+fig, (ax,ax1,ax2)=plt.subplots(3,1,figsize=(9,7),constrained_layout=True,sharex=True,sharey=True)
 
 ax.set_title('300 kHz',loc='left')
 ax.plot(t_NF_300_150,T_NF_300_150,'.-',label='300_150')
