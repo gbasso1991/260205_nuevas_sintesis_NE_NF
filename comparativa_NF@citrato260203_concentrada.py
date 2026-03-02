@@ -362,7 +362,7 @@ df.reset_index(drop=True, inplace=True)
 df
 
 # %% Graficos
-fig, (ax,ax2) = plt.subplots(2,1,figsize=(10,5),constrained_layout=True)
+fig1, (ax,ax2) = plt.subplots(2,1,figsize=(10,5),constrained_layout=True)
 
 for f, sub in df.groupby("frecuencia_kHz"):
     sub = sub.sort_values("campo_kA/m")
@@ -384,7 +384,7 @@ for a in [ax,ax2]:
     a.set_xticks(sub["campo_kA/m"])
     a.grid()
     a.legend(title="Frecuencia (kHz)",ncol=2)
-plt.suptitle('NF@citrato_conc 260203 - 13.0 g/L Fe$_3$O$_4$')    
+plt.suptitle('NF@citrato_conc 260203 - 12.6 g/L Fe$_3$O$_4$')    
 plt.show()
 
 fig2 , (ax,ax2) = plt.subplots(2,1,figsize=(10,5),constrained_layout=True)
@@ -411,7 +411,7 @@ for a in [ax,ax2]:
     a.grid()
     a.legend(title="Frecuencia (kHz)",ncol=2)
 
-plt.suptitle('NF@citrato_conc 260203 - 13.0 g/L Fe$_3$O$_4$')
+plt.suptitle('NF@citrato_conc 260203 - 12.6 g/L Fe$_3$O$_4$')
 plt.show()
 
 # Ahora agrupando por campo y graficando vs frecuencia
@@ -437,7 +437,7 @@ for a in [ax,ax2]:
     a.set_xticks(sub["frecuencia_kHz"])
     a.grid()
     a.legend(title="Frecuencia (kHz)",ncol=3)
-plt.suptitle('NF@citrato_conc 260203 - 13.0 g/L Fe$_3$O$_4$')    
+plt.suptitle('NF@citrato_conc 260203 - 12.6 g/L Fe$_3$O$_4$')    
 plt.show()
 
 #lo mismo para Hc y Mr
@@ -464,11 +464,11 @@ for a in [ax,ax2]:
     a.grid()
     a.legend(title="Frecuencia (kHz)",ncol=3)
 
-plt.suptitle('NF@citrato_conc 260203 - 13.0 g/L Fe$_3$O$_4$')
+plt.suptitle('NF@citrato_conc 260203 - 12.6 g/L Fe$_3$O$_4$')
 plt.show()
 
 #%% Guardo figuras
-for name,figura in zip(['tau_SAR_vs_H','Hc_Mr_vs_H','tau_SAR_vs_frec','Hc_Mr_vs_frec'],[fig,fig2,fig3,fig4]):
+for name,figura in zip(['tau_SAR_vs_H','Hc_Mr_vs_H','tau_SAR_vs_frec','Hc_Mr_vs_frec'],[fig1,fig2,fig3,fig4]):
     figura.savefig(f'NF@citrato - solvotermal - concentrada/{name}.png',dpi=300)
 #%% Ploteo los ciclos promedio
 
@@ -569,10 +569,9 @@ for a in [ax,ax2,ax3,ax4,ax5]:
     a.set_ylabel("M (A/m)")
     a.grid()
     a.legend(title="H$_0$ (kA/m)",ncol=1)
-plt.suptitle('135 kHz - NF@citrato 26solvotermal - concentrada - 9.0 g/L Fe$_3$O$_4$')
+plt.suptitle('135 kHz - NF@citrato solvotermal - concentrada - 12.6 g/L Fe$_3$O$_4$')
 plt.show()
 #%% Ploteo ciclos promedio para 212 kHz
-fig, (ax,ax2,ax3,ax4,ax5) = plt.subplots(5,1,figsize=(6,18),constrained_layout=True,sharex=True,sharey=True)
 for ciclo in ciclos_212_050:
     H_kAm, M_Am, meta = ciclo
     ax.plot(H_kAm/1000,M_Am,label="19 kA/m")
@@ -600,7 +599,7 @@ for a in [ax,ax2,ax3,ax4,ax5]:
     a.set_ylabel("M (A/m)")
     a.grid()
     a.legend(title="H$_0$ (kA/m)",ncol=1)
-plt.suptitle('212 kHz - NF@citrato 26solvotermal - concentrada - 9.0 g/L Fe$_3$O$_4$')
+plt.suptitle('212 kHz - NF@citrato solvotermal - concentrada - 12.6 g/L Fe$_3$O$_4$')
 plt.show()
 #%% Ploteo ciclos promedio para 300 kHz
 fig2, (ax,ax2,ax3,ax4,ax5) = plt.subplots(5,1,figsize=(6,18),constrained_layout=True,sharex=True,sharey=True)
@@ -631,7 +630,7 @@ for a in [ax,ax2,ax3,ax4,ax5]:
     a.set_ylabel("M (A/m)")
     a.grid()
     a.legend(title="H$_0$ (kA/m)",ncol=1)
-plt.suptitle('300 kHz - NF@citrato 26solvotermal - concentrada - 9.0 g/L Fe$_3$O$_4$')
+plt.suptitle('300 kHz - NF@citrato solvotermal - concentrada - 12.6 g/L Fe$_3$O$_4$')
 plt.show()  
 
 
@@ -648,7 +647,7 @@ ax.plot(ciclos_135_150[1][0]/1000,ciclos_135_150[1][1],label="57",zorder=1)
 ax.set_ylabel("M (A/m)")
 ax.grid(zorder=0)
 ax.legend(title="H$_0$ (kA/m)",ncol=1)
-plt.suptitle('135 kHz - NF@citrato 26solvotermal - concentrada - 9.0 g/L Fe$_3$O$_4$')
+plt.suptitle('135 kHz - NF@citrato solvotermal - concentrada - 12.6 g/L Fe$_3$O$_4$')
 plt.show()
 #%%
 #212 kHz
@@ -662,7 +661,7 @@ ax.plot(ciclos_212_150[1][0]/1000,ciclos_212_150[1][1],label="57",zorder=1)
 ax.set_ylabel("M (A/m)")
 ax.grid(zorder=0)
 ax.legend(title="H$_0$ (kA/m)",ncol=1)
-plt.suptitle('212 kHz - NF@citrato 26solvotermal - concentrada - 9.0 g/L Fe$_3$O$_4$')
+plt.suptitle('212 kHz - NF@citrato solvotermal - concentrada - 12.6 g/L Fe$_3$O$_4$')
 plt.show()
 # %%
 # 300 kHz
@@ -670,13 +669,13 @@ fig5,ax =plt.subplots(figsize=(6,5),constrained_layout=True)
 ax.plot(ciclos_300_050[1][0]/1000,ciclos_300_050[1][1],label="19",zorder=5)
 ax.plot(ciclos_300_075[0][0]/1000,ciclos_300_075[0][1],label="29",zorder=4)
 ax.plot(ciclos_300_100[1][0]/1000,ciclos_300_100[1][1],label="38",zorder=3)
-ax.plot(ciclos_300_125[1][0]/1000,ciclos_300_125[1][1],label="47",zorder=2)
+ax.plot(ciclos_300_125[0][0]/1000,ciclos_300_125[0][1],label="47",zorder=2)
 ax.plot(ciclos_300_150[1][0]/1000,ciclos_300_150[1][1],label="57",zorder=1)
 
 ax.set_ylabel("M (A/m)")
 ax.grid(zorder=0)
 ax.legend(title="H$_0$ (kA/m)",ncol=1)
-plt.suptitle('300 kHz - NF@citrato 26solvotermal - concentrada - 9.0 g/L Fe$_3$O$_4$')
+plt.suptitle('300 kHz - NF@citrato solvotermal - concentrada - 12.6 g/L Fe$_3$O$_4$')
 plt.show()
 # %% Comparo ciclos representativos para cada campo
 #20
@@ -688,7 +687,7 @@ ax.plot(ciclos_300_050[1][0]/1000,ciclos_300_050[1][1],label="300 kHz",zorder=1)
 ax.set_ylabel("M (A/m)")
 ax.grid(zorder=0)
 ax.legend(title="$f$ (kHz)",ncol=1)
-ax.set_title("20 kA/m - NF@citrato 26solvotermal - concentrada - 9.0 g/L Fe$_3$O$_4$")
+ax.set_title("20 kA/m - NF@citrato solvotermal - concentrada - 12.6 g/L Fe$_3$O$_4$")
 
 plt.show()
 #%%29
@@ -700,7 +699,7 @@ ax.plot(ciclos_300_075[1][0]/1000,ciclos_300_075[1][1],label="300 kHz",zorder=1)
 ax.set_ylabel("M (A/m)")
 ax.grid(zorder=0)
 ax.legend(title="$f$ (kHz)",ncol=1)
-ax.set_title("29 kA/m - NF@citrato 26solvotermal - concentrada - 9.0 g/L Fe$_3$O$_4$")
+ax.set_title("29 kA/m - NF@citrato solvotermal - concentrada - 12.6 g/L Fe$_3$O$_4$")
 
 plt.show()
 
@@ -713,19 +712,19 @@ ax.plot(ciclos_300_100[1][0]/1000,ciclos_300_100[1][1],label="300 kHz",zorder=1)
 ax.set_ylabel("M (A/m)")
 ax.grid(zorder=0)
 ax.legend(title="$f$ (kHz)",ncol=1)
-ax.set_title("38 kA/m - NF@citrato 26solvotermal - concentrada - 9.0 g/L Fe$_3$O$_4$")
+ax.set_title("38 kA/m - NF@citrato solvotermal - concentrada - 12.6 g/L Fe$_3$O$_4$")
 
 plt.show()
 #%% 47
 fig9,ax =plt.subplots(figsize=(6,5),constrained_layout=True)
 ax.plot(ciclos_135_125[0][0]/1000,ciclos_135_125[0][1],label="135 kHz",zorder=3)
 ax.plot(ciclos_212_125[0][0]/1000,ciclos_212_125[0][1],label="212 kHz",zorder=2)
-ax.plot(ciclos_300_125[1][0]/1000,ciclos_300_125[1][1],label="300 kHz",zorder=1)    
+ax.plot(ciclos_300_125[0][0]/1000,ciclos_300_125[0][1],label="300 kHz",zorder=1)    
 
 ax.set_ylabel("M (A/m)")
 ax.grid(zorder=0)
 ax.legend(title="$f$ (kHz)",ncol=1)
-ax.set_title("47 kA/m - NF@citrato 26solvotermal - concentrada - 9.0 g/L Fe$_3$O$_4$")
+ax.set_title("47 kA/m - NF@citrato solvotermal - concentrada - 12.6 g/L Fe$_3$O$_4$")
 
 plt.show()  
 
@@ -738,7 +737,7 @@ ax.plot(ciclos_300_150[0][0]/1000,ciclos_300_150[0][1],label="300 kHz",zorder=1)
 ax.set_ylabel("M (A/m)")
 ax.grid(zorder=0)
 ax.legend(title="$f$ (kHz)",ncol=1)
-ax.set_title("57 kA/m - NF@citrato solvotermal - concentrada - 9.0 g/L Fe$_3$O$_4$")
+ax.set_title("57 kA/m - NF@citrato solvotermal - concentrada - 12.6 g/L Fe$_3$O$_4$")
 
 plt.show()
 # %% guardo figuras
@@ -754,7 +753,7 @@ for name,figura in zip(['ciclos_135kHz_all',
                         'ciclos_47kAm',
                         'ciclos_57kAm'],
                        [fig0,
-                        fig,
+                        fig1,
                         fig2,
                         fig3,
                         fig4,
