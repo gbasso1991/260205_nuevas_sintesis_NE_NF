@@ -143,7 +143,7 @@ for a in (ax,ax1,ax2):
     a.set_xlim(0,)
 plt.suptitle('NF@citrico - solvotermal - concentrada',fontsize=16)
 plt.savefig('T_vs_t_NF.png', dpi=300)
-plt.xlim(0,150)
+# plt.xlim(0,150)
 plt.show()
 #%% Rcorto a valor minimo
 # indx_min=np.nonzero(T_NE_300_150==T_NE_300_150.min())[0][0]
@@ -156,27 +156,24 @@ for i,e in enumerate([T_NE_300_150,T_NE_300_100,T_NE_300_050,
 
 
 #%%
-%matplotlib inline
 fig, (ax,ax1,ax2)=plt.subplots(3,1,figsize=(10,8),constrained_layout=True,sharex=True)
 
 ax.set_title('300 kHz',loc='left')
 
-ax.plot(t_NE_300_150,T_NE_300_150,'o',label='300_150')
-ax.plot(t_NE_300_150[indx_min[0]:],T_NE_300_150[indx_min[0]:],'.',label='300_150')
-
+ax.plot(t_NE_300_150,T_NE_300_150,'.-',label='300_150')
+# ax.plot(t_NE_300_150[indx_min[0]:],T_NE_300_150[indx_min[0]:],'.',label='300_150')
 ax.plot(t_NE_300_100,T_NE_300_100,'.-',label='300_100')
-
 ax.plot(t_NE_300_050,T_NE_300_050,'.-',label='300_050')
 
 ax1.set_title('212 kHz',loc='left')
 
-ax1.plot(t_NE_212_150,T_NE_212_150,label='212_150')
-ax1.plot(t_NE_212_100,T_NE_212_100,label='212_100')
-#ax1.plot(t_NE_212_050,T_NE_212_050,label='212_050')
+ax1.plot(t_NE_212_150,T_NE_212_150,'.-',label='212_150')
+ax1.plot(t_NE_212_100,T_NE_212_100,'.-',label='212_100')
+ax1.plot(t_NE_212_050,T_NE_212_050,'.-',label='212_050')
 
 ax2.set_title('135 kHz',loc='left')
-ax2.plot(t_NE_135_150,T_NE_135_150,'o',label='135_150')    
-ax2.plot(t_NE_135_150[indx_min[6]:],T_NE_135_150[indx_min[6]:],'.',label='135_150')    
+ax2.plot(t_NE_135_150,T_NE_135_150,'.-',label='135_150')    
+# ax2.plot(t_NE_135_150[indx_min[6]:],T_NE_135_150[indx_min[6]:],'.',label='135_150')    
 
 for a in (ax,ax1,ax2):
     a.grid()
@@ -185,8 +182,8 @@ for a in (ax,ax1,ax2):
 plt.suptitle('NE@citrico - coprecipitacion',fontsize=16)
 plt.show()
 
-#%%
-def ajustes_lineal_T_arbitraria(Tcentral, t, T, label, x=1.0):
+#%% Funcion Ajuste lineal T arbitraria, intervalo arbitario
+def ajustes_lineal_T_arbitraria(Tcentral, t, T, label, x=1.0,guardar=False):
     """
     Realiza ajustes lineal alrededor de Tcentral ± x usando curve_fit.
     
@@ -243,7 +240,7 @@ def ajustes_lineal_T_arbitraria(Tcentral, t, T, label, x=1.0):
     }
     
     # Crear figura 
-    fig, ax = plt.subplots(figsize=(8,6), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(12,6), constrained_layout=True)
     ax.plot(t, T, '.-', label=label)
     
     # Plotear ajustes con el rango extendido que definiste
@@ -251,12 +248,15 @@ def ajustes_lineal_T_arbitraria(Tcentral, t, T, label, x=1.0):
             label=f'Ajuste lineal: {dict_lin["ecuacion"]} (R²={r2_lin:.3f})')
 
     ax.axhspan(Tcentral-x, Tcentral+x, 0, 1, color='tab:red', alpha=0.3, 
-               label='T$_{eq}\pm\Delta T$ ='+ f' {Tcentral} $\pm$ {x} ºC')
+               label='T$_{eq}\pm\Delta T$ ='+ f' {Tcentral:.1f} $\pm$ {x} ºC')
     
     ax.set_xlabel('t (s)')
     ax.set_ylabel('T (°C)')
     ax.grid()
     ax.legend()
+    
+    if guardar:
+        plt.savefig(f'{label}_ajuste_lineal.png', dpi=300)
     plt.show()
 
     # Imprimir resultados (manteniendo tu formato)
@@ -267,23 +267,56 @@ def ajustes_lineal_T_arbitraria(Tcentral, t, T, label, x=1.0):
     
     
     return dict_lin
-#%%# Resultados 
-# resultados_FF1 = ajustes_lineal_T_arbitraria(23.0, t_FF1_0, T_FF1,'FF1', x=2)
-# resultados_FF2 = ajustes_lineal_T_arbitraria(24.0, t_FF2_0, T_FF2,'FF2', x=5)
+#%%# 2 mar 26 
+# en estas medidas no anote el horario de campo ON y campo OFF
+# calculo los rates con ajuste lineal  
+#300
+t_NE_300_050=t_NE_300_050[:440]
 
-resultados_NE_300_150 = ajustes_lineal_T_arbitraria(29.7, t_NE_300_150, T_NE_300_150,'NE 300_150', x=2.5)
-resultados_NE_300_100 = ajustes_lineal_T_arbitraria(29.8, t_NE_300_100, T_NE_300_100,'NE 300_100', x=2.5)
+T_NE_300_050=T_NE_300_050[:440]
+T_interm_NE_300_150 = (T_NE_300_150.max()+T_NE_300_150.min())/2
+T_interm_NE_300_100 = (T_NE_300_100.max()+T_NE_300_100.min())/2
 
+res_NE_300_150 = ajustes_lineal_T_arbitraria(T_interm_NE_300_150, t_NE_300_150, T_NE_300_150,'NE 300_150', x=5, guardar=True)
+res_NE_300_100 = ajustes_lineal_T_arbitraria(T_interm_NE_300_100, t_NE_300_100, T_NE_300_100,'NE 300_100', x=4, guardar=True)
+res_NE_300_050 = ajustes_lineal_T_arbitraria(27.2, t_NE_300_050, T_NE_300_050,'NE 300_050', x=2, guardar=True)
+res_NE_300_050_bis = ajustes_lineal_T_arbitraria(33, t_NE_300_050, T_NE_300_050,'NE 300_050_bis', x=1, guardar=True)
+#%212
+# recorto para evitar problemas de ajuste 
+t_NE_212_150=t_NE_212_150[:240]
+T_NE_212_150=T_NE_212_150[:240]
 
+t_NE_212_100=t_NE_212_100[:340]
+T_NE_212_100=T_NE_212_100[:340]
 
+t_NE_212_050=t_NE_212_050[:1000]
+T_NE_212_050=T_NE_212_050[:1000]
+
+T_interm_NE_212_150 = (T_NE_212_150.max()+T_NE_212_150.min())/2
+T_interm_NE_212_100 = (T_NE_212_100.max()+T_NE_212_100.min())/2
+
+res_NE_212_150 = ajustes_lineal_T_arbitraria(T_interm_NE_212_150, t_NE_212_150, T_NE_212_150,'NE 212_150', x=5, guardar=True)
+res_NE_212_100 = ajustes_lineal_T_arbitraria(T_interm_NE_212_100, t_NE_212_100, T_NE_212_100,'NE 212_100', x=5.5, guardar=True)
+res_NE_212_050 = ajustes_lineal_T_arbitraria(25, t_NE_212_050, T_NE_212_050,'NE 212_050', x=1, guardar=True)
+res_NE_212_050_bis = ajustes_lineal_T_arbitraria(29.2, t_NE_212_050, T_NE_212_050,'NE 212_050_bis', x=0.75, guardar=True)
+#% 135
+t_NE_135_150=t_NE_135_150[:400]
+T_NE_135_150=T_NE_135_150[:400]
+T_interm_NE_135_150 = (T_NE_135_150.max()+T_NE_135_150.min())/2
+res_NE_135_150 = ajustes_lineal_T_arbitraria(T_interm_NE_135_150, t_NE_135_150, T_NE_135_150,'NE 135_150', x=4, guardar=True)
 
 
 #%%
-concentracion=ufloat(11.3,0.4)
-dTdt_lineal_promedio=np.mean([resultados_FF1['pendiente'],resultados_FF2['pendiente']])
-print(f'Pendiente promedio = {dTdt_lineal_promedio:.5f} ºC/s')
-CSAR_lineal = dTdt_lineal_promedio*4.186e3/concentracion
-print(f'CSAR = {CSAR_lineal:.0f} W/g (ajuste lineal)')
+frecs=[300,300,300,300,212,212,212,212,135]
+campos=[57,38,20,20,57,38,20,20,57]
+pendientes=[res_NE_300_150['pendiente'],res_NE_300_100['pendiente'],res_NE_300_050['pendiente'],res_NE_300_050_bis['pendiente'],
+            res_NE_212_150['pendiente'],res_NE_212_100['pendiente'],res_NE_212_050['pendiente'],res_NE_212_050_bis['pendiente'],
+            res_NE_135_150['pendiente']]
+concentracion=ufloat(9,1) #mg/ml
+
+print('frecuencia (kHz)', 'campo (kA/m)', 'pendiente (°C/s)', 'CSAR (W/g)')
+for i,p in enumerate(pendientes):
+    csar=p*4.186e3/concentracion
+    print(f'{frecs[i]:^14.0f}',f'{campos[i]:^14.0f}',f'{pendientes[i]:^14.1uS}',f'{csar:8.1uS} W/g')
 
 
-# %%
